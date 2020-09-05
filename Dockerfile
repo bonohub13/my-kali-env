@@ -8,7 +8,8 @@ RUN apt install -y \
     git \
     hub \
     sudo \
-    wget
+    wget \
+    net-tools
 
 # Environmental settings
 ENV USER username
@@ -35,6 +36,6 @@ RUN git clone https://github.com/morhetz/gruvbox .repos/gruvbox
 RUN cp .repos/vim_settings/.vimrc ${HOME}
 RUN cp -r .repos/gruvbox/colors ${HOME}/.vim
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
-RUN sed -i.bak -e 's#ZSH_THEME="robbyrussell"#ZSH_THEME="bureau"' .zshrc
+RUN sed -i.bak 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bureau"/' .zshrc
 
 CMD ["zsh"]

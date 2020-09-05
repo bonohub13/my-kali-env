@@ -34,7 +34,7 @@ fi
 if [ "$FLG_C" = "True" ]; then
     read -p "Enter password for new user: " USERPASSWORD
     if [ "$(echo -n $USERPASSWORD | wc -m)" -gt "0" ];then
-        sed -i.bak -e "s#user_passwd#$USERPASSWORD#" Dockerfile
+        sed -i.bak "s/user_passwd/$USERPASSWORD/" Dockerfile
         echo -e "password for new user has been set with \\n    $USERPASSWORD"
     fi
 fi
